@@ -9,9 +9,14 @@ public class Brad15 {
 		}catch (Exception e) {
 		}
 	}
-	public double operator() {
+	public double operator(String op) {
 		double r = 0;
-		r = x + y;
+		switch(op) {
+			case "1": r = x + y; break; 
+			case "2": r = x - y; break; 
+			case "3": r = x * y; break; 
+			case "4": r = x*1.0 / y; break;
+		}
 		return r;
 	}
 }

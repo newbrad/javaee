@@ -17,10 +17,14 @@ public class Brad14 extends HttpServlet {
 		// 1. 接收參數, 整理
 		String x = request.getParameter("x");
 		String y = request.getParameter("y");
+		String op = request.getParameter("op");
+		if (x == null) x = "";
+		if (y == null) y = "";
+		if (op == null) op = "";
 		
 		// 2. Model => 演算法
 		Brad15 model = new Brad15(x, y);
-		double result = model.operator();
+		double result = model.operator(op);
 		System.out.println(result);
 		
 		// 3. 呈現 => View
