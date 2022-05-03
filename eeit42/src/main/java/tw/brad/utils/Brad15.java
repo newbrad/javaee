@@ -1,4 +1,4 @@
-package tw.brad.eeit42;
+package tw.brad.utils;
 
 public class Brad15 {
 	private int x, y;
