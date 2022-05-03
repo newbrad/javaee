@@ -13,34 +13,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@WebServlet("/Brad17")
+@WebServlet("/Brad18")
 @MultipartConfig(
 		location = "C:\\Users\\USER\\git\\repository2\\eeit42\\src\\main\\webapp\\upload"
 		)
-public class Brad17 extends HttpServlet {
+public class Brad18 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		String account = request.getParameter("account");
-		//Part part = request.getPart("upload");
-		
 		Collection<Part> parts = request.getParts();
+		int i = 0;
 		for (Part part : parts) {
-			String type = part.getContentType();
 			String name = part.getName();
 			String sname = part.getSubmittedFileName();
-			System.out.println(type);
-			System.out.println(name);
-			System.out.println(sname);
-			System.out.println("----");
+			if (name.equals("upload")) {
+				if (sname.length() == 0) continue;
+				part.write(createNewFilename(i++));
+			}
 		}
-		
-		//part.write(createNewFilename());
-	
 	}
-	
-	private String createNewFilename() {
+	private String createNewFilename(int i) {
 		SimpleDateFormat sd = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss_SSS");
-		String fname = sd.format(new Date()) + ".java";
+		String fname = sd.format(new Date()) + "_" + i + ".png";
 		return fname;
 	}
 
