@@ -23,7 +23,7 @@ public class Brad10 extends HttpServlet {
 		String y = request.getParameter("y");
 		
 		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("Brad11?z=100");
+				request.getRequestDispatcher("Brad11?z=100&y=200");
 		
 		//-------------------
 		response.setContentType("text/html; charset=UTF-8");

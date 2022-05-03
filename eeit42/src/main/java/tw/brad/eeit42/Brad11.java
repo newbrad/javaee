@@ -14,12 +14,15 @@ public class Brad11 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String x = request.getParameter("x");
-		String y = request.getParameter("y");
+		String[] y = request.getParameterValues("y");
 		String z = request.getParameter("z");
 		
 		PrintWriter out = response.getWriter();
 		out.print("Hello, Brad11<br>");
-		out.print("Brad11: " + x + ":" + y + ":" + z);
+		for(String yy : y) {
+			out.print(yy + "<br />");
+		}
+		out.print("Brad11: " + x + ":" + z);
 		response.flushBuffer();
 	
 	}
