@@ -28,7 +28,7 @@ public class Brad14 extends HttpServlet {
 		System.out.println(result);
 		
 		// 3. 呈現 => View
-		request.getRequestDispatcher("Brad16?result=" + result)
+		request.getRequestDispatcher(String.format("Brad16?result=%f&view=%s", result, "view1"))
 			.forward(request, response);;
 		
 	}

@@ -18,6 +18,7 @@ public class Brad16 extends HttpServlet {
 		String y = request.getParameter("y");
 		String op = request.getParameter("op");
 		String r = request.getParameter("result");
+		String view = request.getParameter("view");
 		
 		if (op == null) op = "";
 		String op1 = op.equals("1")?"selected":"";
@@ -28,7 +29,7 @@ public class Brad16 extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		String html = BradUtils.loadView();
+		String html = BradUtils.loadView(view);
 		out.print(String.format(html, x, op1, op2, op3, op4, y, r));
 		
 		response.flushBuffer();

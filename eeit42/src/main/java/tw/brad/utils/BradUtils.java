@@ -6,9 +6,10 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
 public class BradUtils {
-	public static String loadView() {
+	public static String loadView(String view) {
 		String loadfile = 
-			"C:/Users/USER/git/repository2/eeit42/src/main/webapp/views/view1.html";
+			String.format("C:/Users/USER/git/repository2/eeit42/src/main/webapp/views/%s.html",
+					view);
 		File source = new File(loadfile);
 		StringBuffer sb = new StringBuffer();
 		try (FileInputStream fin = new FileInputStream(source);
