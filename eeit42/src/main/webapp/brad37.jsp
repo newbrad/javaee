@@ -2,17 +2,24 @@
     pageEncoding="UTF-8" %>
 <%@ page errorPage="brad38.jsp" %>    
 <%
-	String xStr = "", yStr = "", rStr = "";
+	String xStr = "", yStr = "", rStr = "", op = "";
 	
 	if (request.getParameter("x") != null){
 		xStr = request.getParameter("x");
 		yStr = request.getParameter("y");
+		op = request.getParameter("op");
 	}
 	
 	try{
 		int x = Integer.parseInt(xStr);
 		int y = Integer.parseInt(yStr);
-		int r = x + y;
+		double r = 0;
+		switch (op){
+			case "1": r = x + y; break;
+			case "2": r = x - y; break;
+			case "3": r = x * y; break;
+			case "4": r = x*1.0 / y; break;
+		}
 		rStr = r + "";
 	}catch(Exception e){
 		
@@ -29,7 +36,12 @@
 
 <form>
 	<input type="number" name="x" value="<%= xStr %>" />
-	+
+	<select name="op">
+		<option value="1" <%= op.equals("1")?"selected":"" %>>+</option>
+		<option value="2" <%= op.equals("2")?"selected":"" %>>-</option>
+		<option value="3" <%= op.equals("3")?"selected":"" %>>x</option>
+		<option value="4" <%= op.equals("4")?"selected":"" %>>/</option>
+	</select>
 	<input type="number" name="y" value="<%= yStr %>" />
 	<input type="submit" value="=" />
 	<span><%= rStr %></span>
