@@ -10,15 +10,36 @@
 
 	<table border="1" width="100%">
 		<%
-			int ROWS = 1;
-			int COLS = 9;
-			int START = 1;
+			final int ROWS = 4;
+			final int COLS = 6;
+			final int START = 2;
 			
 			for (int k=0; k<ROWS; k++){
 				out.println("<tr>");
 				for (int j=START; j<(START+COLS); j++){
 					int newj = j + COLS*k;
-					out.println("<td>");
+					if (COLS % 2 == 0){
+						if (k % 2 == 0){
+							if (newj % 2 == 0){
+								out.println("<td bgcolor='pink'>");
+							}else{
+								out.println("<td bgcolor='yellow'>");
+							}
+						}else{
+							if (newj % 2 != 0){
+								out.println("<td bgcolor='pink'>");
+							}else{
+								out.println("<td bgcolor='yellow'>");
+							}
+							
+						}
+					}else{
+						if (newj % 2 == 0){
+							out.println("<td bgcolor='pink'>");
+						}else{
+							out.println("<td bgcolor='yellow'>");
+						}
+					}
 					for (int i=1; i<=9; i++){
 						int r = newj * i;
 						out.println(String.format("%d x %d = %d<br />",newj,i,r));
