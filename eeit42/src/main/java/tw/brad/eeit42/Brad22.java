@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Properties;
 
 import javax.servlet.ServletException;
@@ -39,25 +41,36 @@ public class Brad22 extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		if (!isDupAccount(account)) {
-			int row = addMember(account, passwd, realname);
-			if (row > 0) {
-				// 新增成功
-				out.print("新增成功");
+		try {
+			if (!isDupAccount(account)) {
+				int row = addMember(account, passwd, realname);
+				if (row > 0) {
+					// 新增成功
+					out.print("新增成功");
+				}else {
+					// 新增失敗
+					out.print("新增失敗");
+				}
 			}else {
-				// 新增失敗
-				out.print("新增失敗");
+				// 帳號重複
+				out.print("帳號重複");
 			}
-		}else {
-			// 帳號重複
-			out.print("帳號重複");
+		}catch (Exception e) {
+			System.out.println(e.toString());
 		}
 		response.flushBuffer();
 	
 	}
 
-	private boolean isDupAccount(String account) {
-		return true;
+	private boolean isDupAccount(String account) throws Exception {
+		String sql = "SELECT count(*) as count FROM member WHERE account = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, account);
+		ResultSet rs = pstmt.executeQuery();
+		rs.next();
+		int count = rs.getInt("count");
+		
+		return count > 0;
 	}
 	
 	private int addMember(String account, String passwd, String realname) {
