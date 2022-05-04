@@ -38,6 +38,7 @@ public class Brad24 extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		request.setCharacterEncoding("UTF-8");
 		String account = request.getParameter("account");
 		String passwd = request.getParameter("passwd");
 		
@@ -64,6 +65,7 @@ public class Brad24 extends HttpServlet {
 		pstmt.setString(1, account);
 		ResultSet rs = pstmt.executeQuery();
 		if (rs.next()) {
+			System.out.println("account exist");
 			String hashPasswd = rs.getString("passwd");
 			if (BCrypt.checkpw(passwd, hashPasswd)) {
 				isRight = true;
