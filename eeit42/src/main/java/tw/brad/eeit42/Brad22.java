@@ -73,8 +73,15 @@ public class Brad22 extends HttpServlet {
 		return count > 0;
 	}
 	
-	private int addMember(String account, String passwd, String realname) {
-		return 0;
+	private int addMember(String account, String passwd, String realname)
+		throws Exception {
+		String sql = "INSERT INTO member (account,passwd,realname) VALUES (?,?,?)";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, account);
+		pstmt.setString(2, passwd);
+		pstmt.setString(3, realname);
+		
+		return pstmt.executeUpdate();
 	}
 	
 }
