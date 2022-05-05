@@ -14,6 +14,12 @@
 <title>Brad Big Company</title>
 </head>
 <body>
+<!--  
+	<%
+		out.println("Hello, Brad");
+	%>
+ -->
+
 I am brad45<hr />
 x = <%= x %><br />
 y = <%= y %><br />

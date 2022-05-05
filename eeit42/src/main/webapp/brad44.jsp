@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	// java 註解
 	int v1 = (int)(Math.random()*49+1);
 	int v2 = (int)(Math.random()*49+1);
 %>    
@@ -11,6 +12,7 @@
 <title>Brad Big Company</title>
 </head>
 <body>
+<!-- html 註解 -->
 I am brad44
 <hr />
 <jsp:forward page="brad45.jsp">
