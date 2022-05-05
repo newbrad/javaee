@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="tw.brad.utils.*" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,13 +8,9 @@
 <title>Brad Big Company</title>
 </head>
 <body>
-
-<form action="brad49.jsp">
-	<input name="id" /><br />
-	<input name="account" /><br />
-	<input name="realname" /><br />
-	<input type="submit" value="OK" />
-</form>
+Lottery: ${BradUtils.createLottery() }<br />
+Lottery: ${BradUtils.createLottery() }<br />
+Math: ${Math.random() }<br />
 
 </body>
 </html>

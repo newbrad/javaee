@@ -24,4 +24,14 @@ public class BradUtils {
 		}
 		return sb.toString();
 	}
+	
+	public static int createLottery() {
+		return (int)(Math.random()*49+1);
+	}
+	
+	
 }
+
+
+
+
