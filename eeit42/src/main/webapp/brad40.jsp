@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%
 	int lottery = (int)(Math.random()*49+1);
+
+	application.setAttribute("lottery", lottery);	// int => Integer
+			
+			
+			
 %>
 
 
@@ -15,7 +20,6 @@
 Lottery = <%= lottery %>
 
 <hr />
-<%@ include file="brad41.jsp" %>
 <hr />
 
 </body>
