@@ -29,12 +29,22 @@ public class BradUtils {
 		return (int)(Math.random()*49+1);
 	}
 	
+	public static final String MATH_ADD = "1";
+	public static final String MATH_SUB = "2";
+	public static final String MATH_MUL = "3";
+	public static final String MATH_DIV = "4";
 
-	public static String cal(String x, String y) {
+	public static String cal(String x, String y, String op) {
 		try {
 			int intX = Integer.parseInt(x);
 			int intY = Integer.parseInt(y);
-			return "" + (intX + intY);
+			switch(op) {
+				case MATH_ADD: return "" + (intX + intY);
+				case MATH_SUB: return "" + (intX - intY);
+				case MATH_MUL: return "" + (intX * intY);
+				case MATH_DIV: return "" + (intX / intY) + " ...... " + (intX % intY);
+				default: return "";
+			}
 		}catch (Exception e) {
 			return "";
 		}
