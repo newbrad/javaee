@@ -29,7 +29,16 @@ public class BradUtils {
 		return (int)(Math.random()*49+1);
 	}
 	
-	
+
+	public static String cal(String x, String y) {
+		try {
+			int intX = Integer.parseInt(x);
+			int intY = Integer.parseInt(y);
+			return "" + (intX + intY);
+		}catch (Exception e) {
+			return "";
+		}
+	}
 }
 
 
