@@ -9,6 +9,14 @@
 	user="root"
 	password="root"
 	/> 
+
+<c:if test="${pageContext.request.method == 'GET'}">
+	<c:if test="${!empty param.account }" >
+		<c:redirect url="brad63.jsp" />
+	</c:if>
+</c:if>
+
+	
 <c:if test="${!empty param.account }">
 	<sql:update>
 		INSERT INTO member (account,passwd,realname) VALUES (?,?,?)
@@ -16,7 +24,7 @@
 		<sql:param>${BradUtils.encPasswd(param.passwd) }</sql:param>
 		<sql:param>${param.realname }</sql:param>
 	</sql:update>
-	<c:redirect url="brad63.jsp"></c:redirect>
+	<c:redirect url="brad63.jsp" />
 </c:if>	
 
 <!DOCTYPE html>
@@ -27,7 +35,8 @@
 </head>
 <body>
 
-<form>
+
+<form method='post'>
 	Account: <input type="text" name="account" /><br />
 	Password: <input type="password" name="passwd" /><br />
 	Realname: <input type="text" name="realname" /><br />

@@ -7,7 +7,12 @@
 	url="jdbc:mysql://localhost/iii"
 	user="root"
 	password="root"
-	/>    
+	/> 
+<c:if test="${!empty param.delid }">
+	<sql:update>
+		DELETE FROM member WHERE id = ${param.delid }
+	</sql:update>
+</c:if>	   
 <sql:query var="rs">
 	SELECT * FROM member
 </sql:query>
@@ -24,17 +29,27 @@
 <hr />
 <a href="brad64.jsp"><button type="button" class="btn btn-primary">新增</button></a> 
 
+<script>
+	function delConfirm(account){
+		var isDel = confirm("Delete " + account + "?");
+		return isDel;
+	}
+</script>
 <table border="1" width="100%" class="table">
 	<tr>
 		<th>id.</th>
 		<th>Account</th>
 		<th>Realname</th>
+		<th>Edit</th>
+		<th>Delete</th>
 	</tr>
 	<c:forEach items="${rs.rows }" var="row" varStatus="status">
 		<tr>
 			<td>${row.id }</td>
 			<td>${row.account }</td>
 			<td>${row.realname }</td>
+			<td><a href="brad65.jsp?editid=${row.id }" >Edit</a></td>
+			<td><a href="?delid=${row.id }" onclick="return delConfirm('${row.account }');">Del</a></td>
 		</tr>
 	</c:forEach>
 	
