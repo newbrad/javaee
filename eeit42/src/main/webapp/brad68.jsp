@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="tw.brad.utils.*" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="brad" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,20 +10,13 @@
 <title>Brad Big Company</title>
 </head>
 <body>
-<brad:test1 />
+<c:if test='${fn:contains(param.name, "brad")}'>
+OK
+</c:if>
 <hr />
-<brad:test2 />
-<hr />
-<brad:sayHello user="Brad" />
-<brad:sayHello user="May" />
-<hr />
-<brad:calc x="10" y="3">
-	10 + 3 = ${add }<br />
-	10 - 3 = ${sub }<br />
-</brad:calc>
-
-
-
+<c:if test='${BradUtils.isKeyword(param.name, "brad") }'>
+OK
+</c:if>
 
 
 </body>
