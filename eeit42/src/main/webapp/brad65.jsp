@@ -10,14 +10,16 @@
 	user="root"
 	password="root"
 	/> 
-	
-<sql:update>
-	UPDATE member SET account = ?, realname = ? WHERE id = ?
-	<sql:param>${param.account }</sql:param>
-	<sql:param>${param.realname }</sql:param>
-	<sql:param>${param.id }</sql:param>
-</sql:update>
-<c:redirect url="brad63.jsp" />
+
+<c:if test="${!empty param.id }">
+	<sql:update>
+		UPDATE member SET account = ?, realname = ? WHERE id = ?
+		<sql:param>${param.account }</sql:param>
+		<sql:param>${param.realname }</sql:param>
+		<sql:param>${param.id }</sql:param>
+	</sql:update>
+	<c:redirect url="brad63.jsp" />
+</c:if>
 	
 <c:if test="${empty param.editid }">
 	<c:redirect url="brad63.jsp" />
