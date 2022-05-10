@@ -68,7 +68,31 @@
 				}		
 			);
 		
-		
+			var page;
+			function test1(p){
+				$.ajax({
+					url : "brad85.jsp?page=" + p,
+					type: "get",
+					success : doSuccess,
+					error : doError 
+				});
+			}
+			
+			function doSuccess(){
+				console.log('doSuccess');
+			}
+			
+			function doError(){
+				console.log('doError');
+			}
+			
+			function prev(){
+				test1(--page);
+			}
+			function next(){
+				test1(++page);
+			}
+			
 		
 		</script>
 	</head>
@@ -81,6 +105,10 @@
 		<div id="here3"></div>
 		<input type="button" id="myajax" value="Test4" />
 		<div id="here4"></div>
+		<hr />
+		<input type="button" value="Load" onclick="test1(1)" />
+		<input type="button" value="Prev" onclick="prev()" />
+		<input type="button" value="Next" onclick="next()" />
 	
 	</body>
 </html>
