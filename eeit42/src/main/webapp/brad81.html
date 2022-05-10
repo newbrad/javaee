@@ -78,8 +78,28 @@
 				});
 			}
 			
-			function doSuccess(){
-				console.log('doSuccess');
+			function doSuccess(json){
+				console.log(json);
+				
+				var jsonObj = $.parseJSON(json);
+				page = jsonObj.page;
+				
+				if (jsonObj.error != 0) return;
+				
+				$('#table').empty();
+				$(jsonObj.data).each(
+					function(i, val){
+						console.log(val.name + ":" + val.address);
+						$('#table').append(
+							'<tr>' +
+							'<td>' + val.name + '</td>' + 
+							'<td>' + val.address + '</td>' + 
+							'</tr>'
+						);
+					}		
+				);
+				
+				
 			}
 			
 			function doError(){
@@ -109,6 +129,8 @@
 		<input type="button" value="Load" onclick="test1(1)" />
 		<input type="button" value="Prev" onclick="prev()" />
 		<input type="button" value="Next" onclick="next()" />
+		<hr />
+		<table border="1" width="100%" id="table" />
 	
 	</body>
 </html>
