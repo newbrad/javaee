@@ -6,7 +6,6 @@
 		return;
 	}
 %>    
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +13,12 @@
 <title>Brad Big Company</title>
 </head>
 <body>
-Main Page
+Page2
 <hr />
-Welcome, ${member.realname }
+${member.account } : ${member.realname }
 <hr />
-<a href="brad74.jsp">Page 2</a><br />
 <a href="logout.jsp">Logout</a>
+
+
 </body>
 </html>
